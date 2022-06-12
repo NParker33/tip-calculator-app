@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+:root {
+  /* define colors */
+  --cc-primary: hsl(172, 67%, 45%);
+  --cc-secondary: hsl(183, 100%, 15%);
+  --cc-dk-grey-cyan: hsl(186, 14%, 43%);
+  --cc-grey-cyan: hsl(184, 14%, 56%);
+  --cc-lt-grey-cyan: hsl(185, 41%, 84%);
+  --cc-x-lt-grey-cyan: hsl(189, 41%, 84%);
+  --cc-error: hsl(350, 68%, 64%);
+  /* font styles */
+  --ff-primary: "Space Mono", monospace;
+  --fw-bold: 700;
+  --fs-main: 1.5rem;
+  --fs-secondary: 0.95rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--ff-primary);
+}
+
+body {
+  background: var(--cc-lt-grey-cyan);
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  background: #fff;
+  width: clamp(375px, 90%, 1080px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.input-group label {
+  color: var(--cc-secondary);
+}
+
+input[type="text"] {
+  padding: 5px;
+  background-color: var(--cc-x-lt-grey-cyan);
+  border: none;
+  height: 45px;
+  text-align: right;
+  font-size: var(--fs-main);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#bill {
+  background-image: url("images/icon-dollar.svg");
+  background-repeat: no-repeat;
+  background-position: 10px;
+}
+
+#peopleCount {
+  background-image: url("images/icon-person.svg");
+  background-repeat: no-repeat;
+  background-position: 10px;
+}
+
+input[type="text"]::placeholder {
+  text-align: right;
+  font-size: var(--fs-main);
+  color: var(--cc-grey-cyan);
+}
+
+input[type="text"]:focus {
+  outline: 2px solid var(--cc-primary);
+}
+
+.tips-container {
+  width: 100%;
+  padding: 10px;
+}
+
+.btnTip {
+  width: 40%;
+  height: 45px;
+  font-size: var(--fs-main);
+  margin: 5px 10px;
+  border: none;
+  background: var(--cc-secondary);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnTip:hover,
+.selected {
+  background: var(--cc-primary);
+  color: var(--cc-secondary);
+}
+
+#btnCustom {
+  background: var(--cc-x-lt-grey-cyan);
+  color: var(--cc-secondary);
+  text-align: center;
+}
+
+#btnCustom::placeholder {
+  text-align: center;
+}
+
+.results-container {
+  background: var(--cc-secondary);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  width: 95%;
+  align-self: center;
+}
+
+.calculation {
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.calculation p:first-child {
+  color: #fff;
+}
+
+.calculation span {
+  color: var(--cc-grey-cyan);
+}
+
+.amount {
+  color: var(--cc-primary);
+  font-size: var(--fs-main);
+}
+
+.btnReset {
+  height: 50px;
+  width: 90%;
+  align-self: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: var(--fs-main);
+  text-transform: uppercase;
+  background: hsl(180, 25%, 32%);
+  color: var(--cc-secondary);
+  cursor: pointer;
+}
+
+.btnReset:hover {
+  background: var(--cc-primary);
+}
+
+#peopleCount-group {
+  position: relative;
+}
+
+.error {
+  outline: 2px solid var(--cc-error);
+}
+
+#errorMessage {
+  color: var(--cc-error);
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.attribution {
+  margin-top: 50px;
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh * 0.75);
+    grid-template-rows: 33% 33% 33%;
+    row-gap: 10px;
+    padding: 10px;
+  }
+
+  .input-group,
+  .tips-container {
+    grid-column: 1;
+    align-self: center;
+  }
+
+  .input-group {
+    margin-bottom: 10px;
+  }
+
+  .tips-container p {
+    margin-bottom: 15px;
+  }
+
+  input[type="text"] {
+    height: 60px;
+    margin-top: 15px;
+  }
+
+  .btnTip {
+    width: 30%;
+    height: 60px;
+    margin: 5px 0;
+    font-size: 2rem;
+  }
+
+  .results-container {
+    margin: 0;
+    grid-row: 1 / -1;
+    grid-column: 2;
+    border-radius: 10px;
+    width: 95%;
+    align-self: center;
+    justify-self: center;
+    padding: 30px 25px;
+    height: 90%;
+    justify-content: space-between;
+  }
+
+  .amounts {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calculation {
+    margin: 20px 0;
+    align-items: center;
+  }
+
+  .amount {
+    font-size: 3rem;
+  }
+}
